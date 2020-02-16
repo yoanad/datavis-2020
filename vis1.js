@@ -50,7 +50,7 @@ const sample = [
 const svg = d3.select('svg');
 const svgContainer = d3.select('#container');
 
-const margin = 80;
+const margin = 100;
 const width = 1400 - 2 * margin;
 const height = 900 - 2 * margin;
 
@@ -155,7 +155,7 @@ barGroups
   .append('text')
   .attr('class', 'value')
   .attr('x', (a) => xScale(a.language) + xScale.bandwidth() / 2)
-  .attr('y', (a) => yScale(a.value) + 30)
+  .attr('y', (a) => yScale(a.value) + 50)
   .attr('text-anchor', 'middle')
   .text((a) => `${a.value}%`)
 
@@ -171,7 +171,7 @@ svg
 svg.append('text')
   .attr('class', 'label')
   .attr('x', width / 2 + margin)
-  .attr('y', height + margin * 3)
+  .attr('y', height + margin * 2.5)
   .attr('text-anchor', 'middle')
   .text('Adult groups')
 

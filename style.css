@@ -22,11 +22,7 @@ body {
   .bar {
     /* fill: #80cbc4; */
   }
-  
-  text {
-    font-size: 20px;
-    fill: black;
-  }
+
   
   path {
     stroke: gray;
@@ -50,14 +46,20 @@ body {
     stroke: #9FAAAE;
     stroke-opacity: 0.3;
   }
+
+  text {
+    font-size: 25px;
+    fill: black;
+  }
   
   text.divergence {
-    font-size: 16px;
+    font-size: 18px;
     fill: #2F4A6D;
   }
   
   text.value {
-    font-size: 20px;
+    font-size: 30px;
+    font-weight: 600;
   }
   
   text.title {
@@ -66,10 +68,10 @@ body {
   }
   
   text.label {
-    font-size: 25px;
+    font-size: 40px;
     font-weight: 400;
   }
   
   text.source {
-    font-size: 16px;
+    font-size: 18px;
   }
