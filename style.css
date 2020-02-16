@@ -34,8 +34,8 @@ body {
   
   line#limit {
     stroke: #FED966;
-    stroke-width: 3;
-    stroke-dasharray: 3 6;
+    stroke-width: 5;
+    stroke-dasharray: 5 8;
   }
   
   .grid path {
@@ -44,7 +44,7 @@ body {
   
   .grid .tick line {
     stroke: #9FAAAE;
-    stroke-opacity: 0.3;
+    stroke-opacity: 0.5;
   }
 
   text {
@@ -53,7 +53,7 @@ body {
   }
   
   text.divergence {
-    font-size: 18px;
+    font-size: 30px;
     fill: #2F4A6D;
   }
   

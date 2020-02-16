@@ -1,94 +1,43 @@
-// const colors = ["#bd7837",
-// "#7065bb",
-// "#abac3d",
-// "#b54f90",
-// "#46c19a",
-// "#b94949",
-// "#69a050"]
-const colors = ['#feebe2','#fcc5c0','#fa9fb5','#f768a1','#dd3497','#ae017e','#7a0177'];
-colors.reverse();
-// blues
-
-// const colors = ['#f0f9e8','#ccebc5','#a8ddb5','#7bccc4','#4eb3d3','#2b8cbe','#08589e'];
-
-const sample = [
+const sample2 = [
   {
-    language: 'Anxiety disorders',
+    language: 'All adults',
     value: 19,
     color: colors[0]
   },
   {
-    language: 'Post-traumatic Stress Disorder',
-    value: 4,
+    language: 'Asian adults',
+    value: 15,
     color: colors[1]
   },
   {
-    language: 'Depression',
-    value: 7,
+    language: 'Black adults',
+    value: 16,
     color: colors[2]
   },
   {
-    language: 'Dual diaggnosis',
-    value: 4,
+    language: 'Hispanic or Latin adults',
+    value: 17,
     color: colors[3]
   },
   {
-    language: 'Schizophrenia',
-    value: 1,
+    language: 'White adults',
+    value: 20,
     color: colors[4]
   },
   {
-    language: 'Borderline Personality Disorder',
-    value: 1,
+    language: 'Adult, who report mixed / multiracial',
+    value: 27,
     color: colors[5]
   },
   {
-    language: 'Obsessive Compulsive Disorder',
-    value: 1,
+    language: 'Lesbian, gay and bisexual adults',
+    value: 37,
     color: colors[6]
   }
 ];
 
-// const sample = [
-//   {
-//     language: 'All adults',
-//     value: 19,
-//     color: colors[0]
-//   },
-//   {
-//     language: 'Asian adults',
-//     value: 15,
-//     color: colors[1]
-//   },
-//   {
-//     language: 'Black adults',
-//     value: 16,
-//     color: colors[2]
-//   },
-//   {
-//     language: 'Hispanic or Latin adults',
-//     value: 17,
-//     color: colors[3]
-//   },
-//   {
-//     language: 'White adults',
-//     value: 20,
-//     color: colors[4]
-//   },
-//   {
-//     language: 'Adult, who report mixed / multiracial',
-//     value: 27,
-//     color: colors[5]
-//   },
-//   {
-//     language: 'Lesbian, gay and bisexual adults',
-//     value: 37,
-//     color: colors[6]
-//   }
-// ];
-
-const svg = d3.select('#vis1');
-const svgContainer = d3.select('#container');
+const svg2 = d3.select('#vis2');
+const svgContainer2 = d3.select('#container-2');
 
 const margin = 100;
 const width = 1400 - 2 * margin;
@@ -99,12 +48,12 @@ const chart = svg.append('g')
 
 const xScale = d3.scaleBand()
   .range([0, width])
-  .domain(sample.map((s) => s.language))
+  .domain(sample2.map((s) => s.language))
   .padding(0.1)
 
 const yScale = d3.scaleLinear()
   .range([height, 0])
-  .domain([0, 20]);
+  .domain([0, 100]);
 
 const makeYLines = () => d3.axisLeft()
   .scale(yScale)
@@ -199,7 +148,7 @@ barGroups
   .attr('text-anchor', 'middle')
   .text((a) => `${a.value}%`)
 
-svg
+svg2
   .append('text')
   .attr('class', 'label')
   .attr('x', -(height / 2) - margin)
@@ -208,21 +157,21 @@ svg
   .attr('text-anchor', 'middle')
   .text('Prevalence (in %)')
 
-svg.append('text')
+svg2.append('text')
   .attr('class', 'label')
   .attr('x', width / 2 + margin)
   .attr('y', height + margin * 2.5)
   .attr('text-anchor', 'middle')
   .text('Adult groups')
 
-svg.append('text')
+svg2.append('text')
   .attr('class', 'title')
   .attr('x', width / 2 + margin)
   .attr('y', 40)
   .attr('text-anchor', 'middle')
   .text('12 month prevalence of any mental illness (all U.S. adults)')
 
-svg.append('text')
+svg2.append('text')
   .attr('class', 'source')
   .attr('x', width - margin * 2.5)
   .attr('y', height + margin * 3)
