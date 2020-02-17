@@ -1,58 +1,23 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
-import "./Vis1.css";
-const colors = [
-  "#feebe2",
-  "#fcc5c0",
-  "#fa9fb5",
-  "#f768a1",
-  "#dd3497",
-  "#ae017e",
-  "#7a0177"
-];
-const sample = [
-  {
-    language: "Anxiety disorders",
-    value: 19,
-    color: colors[0]
-  },
-  {
-    language: "Post-traumatic Stress Disorder",
-    value: 4,
-    color: colors[1]
-  },
-  {
-    language: "Depression",
-    value: 7,
-    color: colors[2]
-  },
-  {
-    language: "Dual diaggnosis",
-    value: 4,
-    color: colors[3]
-  },
-  {
-    language: "Schizophrenia",
-    value: 1,
-    color: colors[4]
-  },
-  {
-    language: "Borderline Personality Disorder",
-    value: 1,
-    color: colors[5]
-  },
-  {
-    language: "Obsessive Compulsive Disorder",
-    value: 1,
-    color: colors[6]
-  }
-];
+import "./BarChart.css";
 
-class Vis1 extends Component {
+class BarChart extends Component {
   constructor(props) {
     super(props);
-    this.sample = sample;
-    this.colors = colors;
+
+    this.myInput = React.createRef()
+
+    const state = {
+      dimensions: null
+    }
+
+    this.sample = this.props.sample;
+    this.scale = this.props.scale;
+    this.title = this.props.title;
+    this.group = this.props.group;
+    this.id = this.props.id;
+    this.drawChart = this.drawChart.bind(this);
   }
 
   componentDidMount() {
@@ -60,9 +25,7 @@ class Vis1 extends Component {
   }
 
   drawChart() {
-    const svg = d3
-      .select("svg");
-
+    const svg = d3.select(`#${this.id}`);
     const margin = 100;
     const width = 1400 - 2 * margin;
     const height = 900 - 2 * margin;
@@ -80,7 +43,7 @@ class Vis1 extends Component {
     const yScale = d3
       .scaleLinear()
       .range([height, 0])
-      .domain([0, 20]);
+      .domain([0, this.scale]);
 
     const makeYLines = () => d3.axisLeft().scale(yScale);
 
@@ -100,7 +63,8 @@ class Vis1 extends Component {
           .tickFormat("")
       );
 
-    d3.selectAll("text").call(wrap, 150); /* your container width */
+    const ticks = d3.selectAll('.tick');
+    ticks.selectAll("text").call(wrap, 150);
 
     const barGroups = chart
       .selectAll()
@@ -129,11 +93,18 @@ class Vis1 extends Component {
 
         const y = yScale(actual.value);
 
+        chart.append('line')
+        .attr('id', 'limit')
+        .attr('x1', 0)
+        .attr('y1', y)
+        .attr('x2', width)
+        .attr('y2', y)
+
         barGroups
           .append("text")
           .attr("class", "divergence")
           .attr("x", a => xScale(a.language) + xScale.bandwidth() / 2)
-          .attr("y", a => yScale(a.value) + 50)
+          .attr("y", a => checkAdjustmentY(a))
           .attr("fill", "white")
           .attr("text-anchor", "middle")
           .text((a, idx) => {
@@ -164,7 +135,7 @@ class Vis1 extends Component {
       .append("text")
       .attr("class", "value")
       .attr("x", a => xScale(a.language) + xScale.bandwidth() / 2)
-      .attr("y", a => yScale(a.value) + 50)
+      .attr("y", a => checkAdjustmentY(a))
       .attr("text-anchor", "middle")
       .text(a => `${a.value}%`);
 
@@ -183,7 +154,7 @@ class Vis1 extends Component {
       .attr("x", width / 2 + margin)
       .attr("y", height + margin * 2.5)
       .attr("text-anchor", "middle")
-      .text("Adult groups");
+      .text(this.group);
 
     svg
       .append("text")
@@ -191,7 +162,7 @@ class Vis1 extends Component {
       .attr("x", width / 2 + margin)
       .attr("y", 40)
       .attr("text-anchor", "middle")
-      .text("12 month prevalence of any mental illness (all U.S. adults)");
+      .text(this.title);
 
     svg
       .append("text")
@@ -200,6 +171,14 @@ class Vis1 extends Component {
       .attr("y", height + margin * 3)
       .attr("text-anchor", "start")
       .text("Source: National Alliance on Mental Illness");
+
+      function checkAdjustmentY(a) {
+        if (a.value <= 2) { 
+            return yScale(a.value) - 10 
+        } else {
+            return yScale(a.value) + 50
+        }
+      }
 
     function wrap(text, width) {
       text.each(function() {
@@ -240,10 +219,10 @@ class Vis1 extends Component {
   }
 
   render() {
-    return <div className="container">
-        <svg viewBox='0 0 1400 1000'></svg>
+    return <div className="container" ref={this.myInput}>
+        <svg id={this.id} viewBox='0 0 1400 1000'></svg>
     </div>;
   }
 }
 
-export default Vis1;
+export default BarChart;
