@@ -6,10 +6,8 @@ class BarChart extends Component {
   constructor(props) {
     super(props);
 
-    this.myInput = React.createRef()
-
-    const state = {
-      dimensions: null
+    this.state = {
+      isHidden: this.props.isHidden 
     }
 
     this.sample = this.props.sample;
@@ -17,7 +15,16 @@ class BarChart extends Component {
     this.title = this.props.title;
     this.group = this.props.group;
     this.id = this.props.id;
+  
     this.drawChart = this.drawChart.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.isHidden !== prevProps.isHidden) {
+      this.setState ({
+        isHidden: this.props.isHidden
+      })
+    }
   }
 
   componentDidMount() {
@@ -63,7 +70,7 @@ class BarChart extends Component {
           .tickFormat("")
       );
 
-    const ticks = d3.selectAll('.tick');
+    const ticks = d3.selectAll(".tick");
     ticks.selectAll("text").call(wrap, 150);
 
     const barGroups = chart
@@ -93,12 +100,13 @@ class BarChart extends Component {
 
         const y = yScale(actual.value);
 
-        chart.append('line')
-        .attr('id', 'limit')
-        .attr('x1', 0)
-        .attr('y1', y)
-        .attr('x2', width)
-        .attr('y2', y)
+        chart
+          .append("line")
+          .attr("id", "limit")
+          .attr("x1", 0)
+          .attr("y1", y)
+          .attr("x2", width)
+          .attr("y2", y);
 
         barGroups
           .append("text")
@@ -172,13 +180,13 @@ class BarChart extends Component {
       .attr("text-anchor", "start")
       .text("Source: National Alliance on Mental Illness");
 
-      function checkAdjustmentY(a) {
-        if (a.value <= 2) { 
-            return yScale(a.value) - 10 
-        } else {
-            return yScale(a.value) + 50
-        }
+    function checkAdjustmentY(a) {
+      if (a.value <= 2) {
+        return yScale(a.value) - 10;
+      } else {
+        return yScale(a.value) + 50;
       }
+    }
 
     function wrap(text, width) {
       text.each(function() {
@@ -199,9 +207,11 @@ class BarChart extends Component {
             .attr("x", 0)
             .attr("y", y)
             .attr("dy", dy + "em");
+
         while ((word = words.pop())) {
           line.push(word);
           tspan.text(line.join(" "));
+
           if (tspan.node().getComputedTextLength() > width) {
             line.pop();
             tspan.text(line.join(" "));
@@ -219,9 +229,11 @@ class BarChart extends Component {
   }
 
   render() {
-    return <div className="container" ref={this.myInput}>
-        <svg id={this.id} viewBox='0 0 1400 1000'></svg>
-    </div>;
+    return (
+      <div className={this.state.isHidden ? 'is-hidden container' : 'container'}>
+        <svg id={this.id} viewBox="0 0 1400 1000"></svg>
+      </div>
+    );
   }
 }
 
