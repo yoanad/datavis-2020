@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b80cdacc203e0c95dbe966156b7068d9",
+    "revision": "3f2ca92a85b58157e9b6b749651397f1",
     "url": "/datavis-2020/index.html"
   },
   {
-    "revision": "c2a8969f377d62863876",
+    "revision": "bbc4ec0e995f2c2dd8a5",
     "url": "/datavis-2020/static/css/2.06510f88.chunk.css"
   },
   {
-    "revision": "cfc93b643643746af3e9",
-    "url": "/datavis-2020/static/css/main.79e9bb19.chunk.css"
+    "revision": "778500af6e8f9932c085",
+    "url": "/datavis-2020/static/css/main.e8ac7a73.chunk.css"
   },
   {
-    "revision": "c2a8969f377d62863876",
-    "url": "/datavis-2020/static/js/2.7a6b7956.chunk.js"
+    "revision": "bbc4ec0e995f2c2dd8a5",
+    "url": "/datavis-2020/static/js/2.b2cc8f64.chunk.js"
   },
   {
     "revision": "3adc01bea76e7956dc3633ee898f6936",
-    "url": "/datavis-2020/static/js/2.7a6b7956.chunk.js.LICENSE.txt"
+    "url": "/datavis-2020/static/js/2.b2cc8f64.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "cfc93b643643746af3e9",
-    "url": "/datavis-2020/static/js/main.37f11ec7.chunk.js"
+    "revision": "778500af6e8f9932c085",
+    "url": "/datavis-2020/static/js/main.42cdc3ce.chunk.js"
   },
   {
     "revision": "1cd0e713b631b2850be2",
