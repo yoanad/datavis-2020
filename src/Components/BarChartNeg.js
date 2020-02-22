@@ -28,37 +28,28 @@ class BarChartNeg extends Component {
   }
 
   drawChart() {
-    var margin = 100;
-    var width = 1400 - 2 * margin;
-    var height = 900 - 2 * margin;
-	
-	//add svg with margin !important
-  //this is svg is actually group
+    const margin = 100;
+    const width = 1400 - 2 * margin;
+    const height = 900 - 2 * margin;
+
   const svg = d3.select(`#${this.id}`);
 
   const chart = svg
   	.append("g")  //add group to leave margin for axis
     .attr("transform", `translate(${margin}, ${margin})`);
 
-	// var svg = d3.select("container").append("svg")
-	// 			.attr("width",width+margin.left+margin.right)
-	// 			.attr("height",height+margin.top+margin.bottom)
-	// 			.append("g")  //add group to leave margin for axis
-	// 			.attr("transform","translate("+margin.left+","+margin.top+")");
-	
-	var dataset = [4,2,-6,13,4,8,-23,19,10,-12,2,15];
-	var maxHeight=d3.max(dataset,function(d){return Math.abs(d)});
-	var minHeight=d3.min(dataset,function(d){return Math.abs(d)})
+  const dataset = [4,2,-6,13,4,8,-23,19,10,-12,2,15];
+  const maxHeight=d3.max(dataset,function(d){return Math.abs(d)});
+  const minHeight=d3.min(dataset,function(d){return Math.abs(d)})
 	
 	//set y scale
-	var yScale = d3.scaleLinear().rangeRound([0,height]).domain([maxHeight,-maxHeight]);//show negative
+	const yScale = d3.scaleLinear().rangeRound([0,height]).domain([maxHeight,-maxHeight]);//show negative
 	//add x axis
-	var xScale = d3.scaleBand().rangeRound([0,width]).padding(0.1);//scaleBand is used for  bar chart
+	const xScale = d3.scaleBand().rangeRound([0,width]).padding(0.1);//scaleBand is used for  bar chart
 	xScale.domain([0,1,2,3,4,5,6,7,8,9,10,11]);//value in this array must be unique
 	/*if domain is specified, sets the domain to the specified array of values. The first element in domain will be mapped to the first band, the second domain value to the second band, and so on. Domain values are stored internally in a map from stringified value to index; the resulting index is then used to determine the band. Thus, a band scale’s values must be coercible to a string, and the stringified version of the domain value uniquely identifies the corresponding band. If domain is not specified, this method returns the current domain.*/
-	
-	var barpadding = 2;
-	var bars = chart.selectAll("rect").data(dataset).enter().append("rect");
+
+	const bars = chart.selectAll("rect").data(dataset).enter().append("rect");
 	bars.attr("x",function(d,i){
 			  return xScale(i);//i*(width/dataset.length);
 			  })
@@ -85,7 +76,7 @@ class BarChartNeg extends Component {
 	});
 	
 	//add tag to every bar
-	var tags = chart.selectAll("text").data(dataset).enter().append("text").text(function(d){
+	const tags = chart.selectAll("text").data(dataset).enter().append("text").text(function(d){
 		return d;
 	});
 	tags.attr("x",function(d,i){
@@ -102,11 +93,11 @@ class BarChartNeg extends Component {
 	.attr("fill","white");
 	
 	//add x and y axis
-	var yAxis = d3.axisLeft(yScale);
+	const yAxis = d3.axisLeft(yScale);
 	chart.append("g").call(yAxis);
 	
 
-	var xAxis = d3.axisBottom(xScale);/*.tickFormat("");remove tick label*/
+	const xAxis = d3.axisBottom(xScale);/*.tickFormat("");remove tick label*/
 	chart.append("g").call(xAxis).attr("transform", "translate(0,"+height/2+")");
 	
 	//add label for x axis and y axis

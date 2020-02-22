@@ -30,7 +30,10 @@ class App extends Component {
     return(
       <div className="App">
         <Typography variant="h2" component="h2">
-          Built using ReactJS, d3 & github pages.
+          Data Visualization Assignment 1
+        </Typography>
+        <Typography variant="p" component="p">
+          Built using D3.js, React.js, MaterialUI and Github pages.
         </Typography>
         <Tabs
           value={this.state.activeIdx}
