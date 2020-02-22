@@ -7,7 +7,7 @@ import 'typeface-roboto';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-
+import BarChartNeg from "./Components/BarChartNeg";
 
 class App extends Component {
   constructor(props) {
@@ -41,11 +41,15 @@ class App extends Component {
           <Tab label="Visualization 1" />
           <Tab label="Visualization 2" />
         </Tabs>
+        <BarChartNeg  value={this.state.activeIdx}
+                      index={0}
+                      id="brexit"
+                      isHidden={this.state.activeIdx !== 0 }></BarChartNeg>
         <BarChart title="12 month prevalence of any mental illness (all U.S. adults)"
                       group="Adult groups"
                       value={this.state.activeIdx}
-                      index={0}
-                      isHidden={this.state.activeIdx !== 0 }
+                      index={1}
+                      isHidden={this.state.activeIdx !== 1 }
                       sample={AnyIllnessSample}
                       scale={40}
                       id="any-illness"></BarChart>

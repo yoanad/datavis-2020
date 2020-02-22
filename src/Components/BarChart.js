@@ -7,7 +7,7 @@ class BarChart extends Component {
     super(props);
 
     this.state = {
-      isHidden: this.props.isHidden 
+      isHidden: this.props.isHidden,
     }
 
     this.sample = this.props.sample;
@@ -17,6 +17,7 @@ class BarChart extends Component {
     this.id = this.props.id;
   
     this.drawChart = this.drawChart.bind(this);
+    this.wrap = this.wrap.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -25,9 +26,6 @@ class BarChart extends Component {
         isHidden: this.props.isHidden
       })
     }
-  }
-
-  componentDidMount() {
     this.drawChart();
   }
 
@@ -70,8 +68,9 @@ class BarChart extends Component {
           .tickFormat("")
       );
 
-    const ticks = d3.selectAll(".tick");
-    ticks.selectAll("text").call(wrap, 150);
+    
+    const ticks = svg.selectAll(".tick");
+    ticks.selectAll("text").call(this.wrap, 150);
 
     const barGroups = chart
       .selectAll()
@@ -180,52 +179,55 @@ class BarChart extends Component {
       .attr("text-anchor", "start")
       .text("Source: National Alliance on Mental Illness");
 
-    function checkAdjustmentY(a) {
-      if (a.value <= 2) {
-        return yScale(a.value) - 10;
-      } else {
-        return yScale(a.value) + 50;
+      function checkAdjustmentY(a) {
+        if (a.value <= 2) {
+          return yScale(a.value) - 10;
+        } else {
+          return yScale(a.value) + 50;
+        }
       }
-    }
+  }
 
-    function wrap(text, width) {
-      text.each(function() {
-        var text = d3.select(this),
-          words = text
-            .text()
-            .split(/\s+/)
-            .reverse(),
-          word,
-          line = [],
-          lineNumber = 0,
-          lineHeight = 1.2, // ems
-          y = text.attr("y"),
-          dy = parseFloat(text.attr("dy")),
+  wrap(text, width) {
+
+    console.log(text )
+
+    text.each(function(el, i) {
+      console.log(this)
+      var text = d3.select(this),
+        words = text
+          .text()
+          .split(/\s+/)
+          .reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.2, // ems
+        y = text.attr("y"),
+        dy = parseFloat(text.attr("dy")),
+        tspan = text
+          .text(null)
+          .append("tspan")
+          .attr("x", 0)
+          .attr("y", y)
+          .attr("dy", dy + "em");
+
+      while ((word = words.pop())) {
+        line.push(word);
+        tspan.text(line.join(" "));
+        if (tspan.node().getComputedTextLength() > width) {
+          line.pop();
+          tspan.text(line.join(" "));
+          line = [word];
           tspan = text
-            .text(null)
             .append("tspan")
             .attr("x", 0)
-            .attr("y", y)
-            .attr("dy", dy + "em");
-
-        while ((word = words.pop())) {
-          line.push(word);
-          tspan.text(line.join(" "));
-
-          if (tspan.node().getComputedTextLength() > width) {
-            line.pop();
-            tspan.text(line.join(" "));
-            line = [word];
-            tspan = text
-              .append("tspan")
-              .attr("x", 0)
-              .attr("y", y * line)
-              .attr("dy", lineHeight + "em")
-              .text(word);
-          }
+            .attr("y", y * line)
+            .attr("dy", lineHeight + "em")
+            .text(word);
         }
-      });
-    }
+      }
+    });
   }
 
   render() {
