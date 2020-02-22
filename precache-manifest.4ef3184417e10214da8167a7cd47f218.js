@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "455bcd833dd27a495c4399fe61fa9f3f",
+    "revision": "dd7b6d05f9f1e0a5c7fa4813ff1e5658",
     "url": "/datavis-2020/index.html"
   },
   {
-    "revision": "d336c35993ebc1a869f6",
+    "revision": "787a4bfda86e3afd0c06",
     "url": "/datavis-2020/static/css/2.06510f88.chunk.css"
   },
   {
-    "revision": "9581684037a1f31c2f62",
+    "revision": "6bcbc27ae36127934c7e",
     "url": "/datavis-2020/static/css/main.93dd629f.chunk.css"
   },
   {
-    "revision": "d336c35993ebc1a869f6",
-    "url": "/datavis-2020/static/js/2.bc1ce7b2.chunk.js"
+    "revision": "787a4bfda86e3afd0c06",
+    "url": "/datavis-2020/static/js/2.b76ce220.chunk.js"
   },
   {
     "revision": "3adc01bea76e7956dc3633ee898f6936",
-    "url": "/datavis-2020/static/js/2.bc1ce7b2.chunk.js.LICENSE.txt"
+    "url": "/datavis-2020/static/js/2.b76ce220.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9581684037a1f31c2f62",
-    "url": "/datavis-2020/static/js/main.9edb1bfa.chunk.js"
+    "revision": "6bcbc27ae36127934c7e",
+    "url": "/datavis-2020/static/js/main.aa4f7ba3.chunk.js"
   },
   {
     "revision": "1cd0e713b631b2850be2",
@@ -122,5 +122,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ebf6d1640ccddb99fb49f73c052c55a8",
     "url": "/datavis-2020/static/media/roboto-latin-900italic.ebf6d164.woff2"
+  },
+  {
+    "revision": "ba2db4f7b6176d02ac125cbb0080f383",
+    "url": "/datavis-2020/static/media/uk-immigration.ba2db4f7.csv"
   }
 ]);
