@@ -1,27 +1,27 @@
 {
   "files": {
     "main.css": "/datavis-2020/static/css/main.93dd629f.chunk.css",
-    "main.js": "/datavis-2020/static/js/main.aa4f7ba3.chunk.js",
-    "main.js.map": "/datavis-2020/static/js/main.aa4f7ba3.chunk.js.map",
+    "main.js": "/datavis-2020/static/js/main.779d4c7a.chunk.js",
+    "main.js.map": "/datavis-2020/static/js/main.779d4c7a.chunk.js.map",
     "runtime-main.js": "/datavis-2020/static/js/runtime-main.a040696d.js",
     "runtime-main.js.map": "/datavis-2020/static/js/runtime-main.a040696d.js.map",
     "static/css/2.06510f88.chunk.css": "/datavis-2020/static/css/2.06510f88.chunk.css",
     "static/js/2.b76ce220.chunk.js": "/datavis-2020/static/js/2.b76ce220.chunk.js",
     "static/js/2.b76ce220.chunk.js.map": "/datavis-2020/static/js/2.b76ce220.chunk.js.map",
     "index.html": "/datavis-2020/index.html",
-    "precache-manifest.4ef3184417e10214da8167a7cd47f218.js": "/datavis-2020/precache-manifest.4ef3184417e10214da8167a7cd47f218.js",
+    "precache-manifest.109d425138fda079e257db24a603aec7.js": "/datavis-2020/precache-manifest.109d425138fda079e257db24a603aec7.js",
     "service-worker.js": "/datavis-2020/service-worker.js",
     "static/css/2.06510f88.chunk.css.map": "/datavis-2020/static/css/2.06510f88.chunk.css.map",
     "static/css/main.93dd629f.chunk.css.map": "/datavis-2020/static/css/main.93dd629f.chunk.css.map",
     "static/js/2.b76ce220.chunk.js.LICENSE.txt": "/datavis-2020/static/js/2.b76ce220.chunk.js.LICENSE.txt",
     "static/media/index.css": "/datavis-2020/static/media/roboto-latin-900italic.ebf6d164.woff2",
-    "static/media/uk-immigration.csv": "/datavis-2020/static/media/uk-immigration.ba2db4f7.csv"
+    "static/media/vis1.svg": "/datavis-2020/static/media/vis1.8e372d1f.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.a040696d.js",
     "static/css/2.06510f88.chunk.css",
     "static/js/2.b76ce220.chunk.js",
     "static/css/main.93dd629f.chunk.css",
-    "static/js/main.aa4f7ba3.chunk.js"
+    "static/js/main.779d4c7a.chunk.js"
   ]
 }
