@@ -9,22 +9,22 @@ class BarChart extends Component {
     this.state = {
       isHidden: this.props.isHidden,
       shouldWrapText: true
-    }
+    };
 
     this.sample = this.props.sample;
     this.scale = this.props.scale;
     this.title = this.props.title;
     this.group = this.props.group;
     this.id = this.props.id;
-  
+
     this.drawChart = this.drawChart.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.isHidden !== prevProps.isHidden) {
-      this.setState ({
+      this.setState({
         isHidden: this.props.isHidden
-      })
+      });
     }
     this.drawChart();
   }
@@ -68,7 +68,6 @@ class BarChart extends Component {
           .tickFormat("")
       );
 
-    
     const ticks = svg.selectAll(".tick");
     ticks.selectAll("text").call(wrap, 150);
 
@@ -179,56 +178,58 @@ class BarChart extends Component {
       .attr("text-anchor", "start")
       .text("Source: National Alliance on Mental Illness");
 
-      function checkAdjustmentY(a) {
-        if (a.value <= 2) {
-          return yScale(a.value) - 10;
-        } else {
-          return yScale(a.value) + 50;
-        }
+    function checkAdjustmentY(a) {
+      if (a.value <= 2) {
+        return yScale(a.value) - 10;
+      } else {
+        return yScale(a.value) + 50;
       }
+    }
 
-      function wrap(text, width) {
-        text.each(function(el, i) {
-          const text = d3.select(this);
-          let words = text
-              .text()
-              .split(/\s+/)
-              .reverse(),
-            word,
-            line = [],
-            lineNumber = 0,
-            lineHeight = 1.2, // ems
-            y = text.attr("y"),
-            dy = parseFloat(text.attr("dy")),
+    function wrap(text, width) {
+      text.each(function(el, i) {
+        const text = d3.select(this);
+        let words = text
+            .text()
+            .split(/\s+/)
+            .reverse(),
+          word,
+          line = [],
+          lineNumber = 0,
+          lineHeight = 1.2, // ems
+          y = text.attr("y"),
+          dy = parseFloat(text.attr("dy")),
+          tspan = text
+            .text(null)
+            .append("tspan")
+            .attr("x", 0)
+            .attr("y", y)
+            .attr("dy", dy + "em");
+
+        while ((word = words.pop())) {
+          line.push(word);
+          tspan.text(line.join(" "));
+          if (tspan.node().getComputedTextLength() > width) {
+            line.pop();
+            tspan.text(line.join(" "));
+            line = [word];
             tspan = text
-              .text(null)
               .append("tspan")
               .attr("x", 0)
-              .attr("y", y)
-              .attr("dy", dy + "em");
-
-          while ((word = words.pop())) {
-            line.push(word);
-            tspan.text(line.join(" "));
-            if (tspan.node().getComputedTextLength() > width) {
-              line.pop();
-              tspan.text(line.join(" "));
-              line = [word];
-              tspan = text
-                .append("tspan")
-                .attr("x", 0)
-                .attr("y", y * line)
-                .attr("dy", lineHeight + "em")
-                .text(word);
-            }
+              .attr("y", y * line)
+              .attr("dy", lineHeight + "em")
+              .text(word);
           }
-        });
-      }
+        }
+      });
+    }
   }
 
   render() {
     return (
-      <div className={this.state.isHidden ? 'is-hidden container' : 'container'}>
+      <div
+        className={this.state.isHidden ? "is-hidden container" : "container"}
+      >
         <svg key={Math.random()} id={this.id} viewBox="0 0 1400 1000"></svg>
       </div>
     );

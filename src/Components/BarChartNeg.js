@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import * as d3 from "d3";
 import "./BarChartNeg.css";
 import vis from "./vis1.svg";
-import "typeface-roboto";
 
 class BarChartNeg extends Component {
   constructor(props) {
@@ -25,7 +24,8 @@ class BarChartNeg extends Component {
   render() {
     return (
       <div
-        className={this.state.isHidden ? "is-hidden container" : "container"}>
+        className={this.state.isHidden ? "is-hidden container" : "container"}
+      >
         <img src={vis} />
       </div>
     );
