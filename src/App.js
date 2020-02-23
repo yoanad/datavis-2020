@@ -65,7 +65,7 @@ class App extends Component {
           </CardContent>
         </Card>
         <BarChart
-          title="12 month prevalence of any mental illness (all U.S. adults)"
+          title="12 month prevalence (in %) of any mental illness (all U.S. adults)"
           group="Adult groups"
           value={this.state.activeIdx}
           index={1}
@@ -75,7 +75,7 @@ class App extends Component {
           id="any-illness"
         ></BarChart>
         <BarChart
-          title="12 month prevalence of common mental illnesses (all U.S. adults)"
+          title="12 month prevalence (in %) of common mental illnesses (all U.S. adults)"
           value={this.state.activeIdx}
           index={1}
           isHidden={this.state.activeIdx !== 1}

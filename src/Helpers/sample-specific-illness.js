@@ -10,9 +10,19 @@ const colors = [
 
 const SpecificIllnessSample = [
     {
-      language: 'Anxiety disorders',
-      value: 19,
-      color: colors[0]
+      language: 'Schizophrenia',
+      value: 1,
+      color: colors[4]
+    },
+    {
+      language: 'Borderline Personality Disorder',
+      value: 1,
+      color: colors[5]
+    },
+    {
+      language: 'Obsessive Compulsive Disorder',
+      value: 1,
+      color: colors[6]
     },
     {
       language: 'Post-traumatic Stress Disorder',
@@ -30,19 +40,9 @@ const SpecificIllnessSample = [
       color: colors[2]
     },
     {
-      language: 'Schizophrenia',
-      value: 1,
-      color: colors[4]
-    },
-    {
-      language: 'Borderline Personality Disorder',
-      value: 1,
-      color: colors[5]
-    },
-    {
-      language: 'Obsessive Compulsive Disorder',
-      value: 1,
-      color: colors[6]
+      language: 'Anxiety disorders',
+      value: 19,
+      color: colors[0]
     }
   ];
 

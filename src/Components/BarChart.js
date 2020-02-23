@@ -47,7 +47,7 @@ class BarChart extends Component {
 
     const yScale = d3
       .scaleLinear()
-      .range([height, 0])
+      .range([height,0])
       .domain([0, this.scale]);
 
     const makeYLines = () => d3.axisLeft().scale(yScale);
@@ -57,7 +57,9 @@ class BarChart extends Component {
       .attr("transform", `translate(0, ${height})`)
       .call(d3.axisBottom(xScale));
 
-    chart.append("g").call(d3.axisLeft(yScale));
+    chart
+      .append("g")
+      .call(d3.axisLeft(yScale));
 
     chart
       .append("g")
@@ -66,7 +68,8 @@ class BarChart extends Component {
         makeYLines()
           .tickSize(-width, 0, 0)
           .tickFormat("")
-      );
+      )
+      .attr("transform", `translate(${width/2}, 0)`)
 
     const ticks = svg.selectAll(".tick");
     ticks.selectAll("text").call(wrap, 150);
