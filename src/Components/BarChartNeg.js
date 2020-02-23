@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
 import "./BarChartNeg.css";
+import vis from './vis1.svg';
 
 class BarChartNeg extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class BarChartNeg extends Component {
   }
 
   componentDidMount() {
-    this.drawChart();
+    //this.drawChart();
   }
 
   drawChart() {
@@ -32,91 +33,116 @@ class BarChartNeg extends Component {
     const width = 1400 - 2 * margin;
     const height = 900 - 2 * margin;
 
-  const svg = d3.select(`#${this.id}`);
+    const svg = d3.select(`#${this.id}`);
 
-  const chart = svg
-  	.append("g")  //add group to leave margin for axis
-    .attr("transform", `translate(${margin}, ${margin})`);
+    const chart = svg
+      .append("g") //add group to leave margin for axis
+      .attr("transform", `translate(${margin}, ${margin})`);
 
-  const dataset = [4,2,-6,13,4,8,-23,19,10,-12,2,15];
-  const maxHeight=d3.max(dataset,function(d){return Math.abs(d)});
-  const minHeight=d3.min(dataset,function(d){return Math.abs(d)})
-	
-	//set y scale
-	const yScale = d3.scaleLinear().rangeRound([0,height]).domain([maxHeight,-maxHeight]);//show negative
-	//add x axis
-	const xScale = d3.scaleBand().rangeRound([0,width]).padding(0.1);//scaleBand is used for  bar chart
-	xScale.domain([0,1,2,3,4,5,6,7,8,9,10,11]);//value in this array must be unique
-	/*if domain is specified, sets the domain to the specified array of values. The first element in domain will be mapped to the first band, the second domain value to the second band, and so on. Domain values are stored internally in a map from stringified value to index; the resulting index is then used to determine the band. Thus, a band scale’s values must be coercible to a string, and the stringified version of the domain value uniquely identifies the corresponding band. If domain is not specified, this method returns the current domain.*/
+    const dataset = d3.csvParse(this.sample);
+    const maxHeight = d3.max(dataset, function(d) {
+      return Math.abs(d);
+    });
 
-	const bars = chart.selectAll("rect").data(dataset).enter().append("rect");
-	bars.attr("x",function(d,i){
-			  return xScale(i);//i*(width/dataset.length);
-			  })
-	.attr("y",function(d){
-		if(d<0){
-			return height/2;
-		}
-		else{
-			return yScale(d);	
-		}
-		
-	})//for bottom to top
-	.attr("width", xScale.bandwidth()/*width/dataset.length-barpadding*/)
-	.attr("height", function(d){
-		return height/2 -yScale(Math.abs(d));
-	});
-	bars.attr("fill",function(d){
-		if(d>=0){
-			return "green";
-		}
-		else{
-			return "orange";
-		}
-	});
-	
-	//add tag to every bar
-	const tags = chart.selectAll("text").data(dataset).enter().append("text").text(function(d){
-		return d;
-	});
-	tags.attr("x",function(d,i){
-			  return xScale(i)+8;
-			  })
-	.attr("y",function(d){
-		if(d>=0){
-			return yScale(d)+12;
-		}
-		else{
-			return height-yScale(Math.abs(d))-2;
-		}
-	})//for bottom to top
-	.attr("fill","white");
-	
-	//add x and y axis
-	const yAxis = d3.axisLeft(yScale);
-	chart.append("g").call(yAxis);
-	
+    const minHeight = d3.min(dataset, function(d) {
+      return Math.abs(d);
+    });
 
-	const xAxis = d3.axisBottom(xScale);/*.tickFormat("");remove tick label*/
-	chart.append("g").call(xAxis).attr("transform", "translate(0,"+height/2+")");
-	
-	//add label for x axis and y axis
-	chart.append("text").text("Y Label")
-		.attr("x",0-height/2)
-		.attr("y",0-margin/2)
-		.attr("dy","1em")
-      	.style("text-anchor", "middle")
-		.attr("transform","rotate(-90)");
-	svg.append("text").text("X Label")
-		.attr("x",width/2)
-		.attr("y",height+margin/2)
-      	.style("text-anchor", "middle");
+    //set y scale
+    const yScale = d3
+      .scaleLinear()
+      .rangeRound([0, height])
+      .domain([maxHeight, -maxHeight]); //show negative
+    //add x axis
+    const xScale = d3
+      .scaleBand()
+      .rangeRound([0, width])
+      .padding(0.1); //scaleBand is used for  bar chart
+    xScale.domain([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]); //value in this array must be unique
+    /*if domain is specified, sets the domain to the specified array of values. The first element in domain will be mapped to the first band, the second domain value to the second band, and so on. Domain values are stored internally in a map from stringified value to index; the resulting index is then used to determine the band. Thus, a band scale’s values must be coercible to a string, and the stringified version of the domain value uniquely identifies the corresponding band. If domain is not specified, this method returns the current domain.*/
+
+    const bars = chart
+      .selectAll("rect")
+      .data(dataset)
+      .enter()
+      .append("rect");
+    bars
+      .attr("x", function(d, i) {
+        return xScale(i); //i*(width/dataset.length);
+      })
+      .attr("y", function(d) {
+        if (d < 0) {
+          return height / 2;
+        } else {
+          return yScale(d);
+        }
+      }) //for bottom to top
+      .attr("width", xScale.bandwidth() /*width/dataset.length-barpadding*/)
+      .attr("height", function(d) {
+        return height / 2 - yScale(Math.abs(d));
+      });
+    bars.attr("fill", function(d) {
+      if (d >= 0) {
+        return "green";
+      } else {
+        return "orange";
+      }
+    });
+
+    //add tag to every bar
+    const tags = chart
+      .selectAll("text")
+      .data(dataset)
+      .enter()
+      .append("text")
+      .text(function(d) {
+        return d;
+      });
+    tags
+      .attr("x", function(d, i) {
+        return xScale(i) + 8;
+      })
+      .attr("y", function(d) {
+        if (d >= 0) {
+          return yScale(d) + 12;
+        } else {
+          return height - yScale(Math.abs(d)) - 2;
+        }
+      }) //for bottom to top
+      .attr("fill", "white");
+
+    //add x and y axis
+    const yAxis = d3.axisLeft(yScale);
+    chart.append("g").call(yAxis);
+
+    const xAxis = d3.axisBottom(xScale); /*.tickFormat("");remove tick label*/
+    chart
+      .append("g")
+      .call(xAxis)
+      .attr("transform", "translate(0," + height / 2 + ")");
+
+    //add label for x axis and y axis
+    chart
+      .append("text")
+      .text("Y Label")
+      .attr("x", 0 - height / 2)
+      .attr("y", 0 - margin / 2)
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .attr("transform", "rotate(-90)");
+    svg
+      .append("text")
+      .text("X Label")
+      .attr("x", width / 2)
+      .attr("y", height + margin / 2)
+      .style("text-anchor", "middle");
   }
 
   render() {
     return (
-      <div className={this.state.isHidden ? 'is-hidden container' : 'container'}>
-        <svg viewBox="0 0 1400 1000" id={this.id}></svg>
+      <div
+        className={this.state.isHidden ? "is-hidden container" : "container"}>
+        <img src={vis} />
       </div>
     );
   }

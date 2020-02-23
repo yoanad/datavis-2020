@@ -46,7 +46,7 @@ class App extends Component {
         </Tabs>
         <BarChartNeg  value={this.state.activeIdx}
                       index={0}
-                      id="brexit"
+                      id="uk-immigration"
                       isHidden={this.state.activeIdx !== 0 }></BarChartNeg>
         <BarChart title="12 month prevalence of any mental illness (all U.S. adults)"
                       group="Adult groups"
