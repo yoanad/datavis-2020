@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/datavis-2020/static/css/main.0702e505.chunk.css",
+    "main.css": "/datavis-2020/static/css/main.47e5fe7d.chunk.css",
     "main.js": "/datavis-2020/static/js/main.2046b5b5.chunk.js",
     "main.js.map": "/datavis-2020/static/js/main.2046b5b5.chunk.js.map",
     "runtime-main.js": "/datavis-2020/static/js/runtime-main.a040696d.js",
@@ -9,10 +9,10 @@
     "static/js/2.fa7f711e.chunk.js": "/datavis-2020/static/js/2.fa7f711e.chunk.js",
     "static/js/2.fa7f711e.chunk.js.map": "/datavis-2020/static/js/2.fa7f711e.chunk.js.map",
     "index.html": "/datavis-2020/index.html",
-    "precache-manifest.8a094622d83e83097d438e29fb5deda0.js": "/datavis-2020/precache-manifest.8a094622d83e83097d438e29fb5deda0.js",
+    "precache-manifest.958a5b0856b59334dafa3c83dbfed070.js": "/datavis-2020/precache-manifest.958a5b0856b59334dafa3c83dbfed070.js",
     "service-worker.js": "/datavis-2020/service-worker.js",
     "static/css/2.06510f88.chunk.css.map": "/datavis-2020/static/css/2.06510f88.chunk.css.map",
-    "static/css/main.0702e505.chunk.css.map": "/datavis-2020/static/css/main.0702e505.chunk.css.map",
+    "static/css/main.47e5fe7d.chunk.css.map": "/datavis-2020/static/css/main.47e5fe7d.chunk.css.map",
     "static/js/2.fa7f711e.chunk.js.LICENSE.txt": "/datavis-2020/static/js/2.fa7f711e.chunk.js.LICENSE.txt",
     "static/media/index.css": "/datavis-2020/static/media/roboto-latin-900italic.ebf6d164.woff2",
     "static/media/vis1.svg": "/datavis-2020/static/media/vis1.8e372d1f.svg"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.a040696d.js",
     "static/css/2.06510f88.chunk.css",
     "static/js/2.fa7f711e.chunk.js",
-    "static/css/main.0702e505.chunk.css",
+    "static/css/main.47e5fe7d.chunk.css",
     "static/js/main.2046b5b5.chunk.js"
   ]
 }
