@@ -27,24 +27,6 @@ class BarChart extends Component {
       })
     }
     this.drawChart();
-
-    // if (this.state.shouldWrapText) {
-    //   const ticks = d3.select(`#${this.id}`).selectAll(".tick");
-    //   ticks.selectAll("text").call(this.wrap, 150);
-    // }
-  }
-
-  componentDidMount() {
-
-    // if (this.state.shouldWrapText) {
-
-    //   const ticks = d3.select(`#${this.id}`).selectAll(".tick");
-    //   ticks.selectAll("text").call(this.wrap, 150);
-
-    //   this.setState ({
-    //     shouldWrapText: false
-    //   })
-    // }
   }
 
   drawChart() {
@@ -224,7 +206,7 @@ class BarChart extends Component {
               .attr("x", 0)
               .attr("y", y)
               .attr("dy", dy + "em");
-              
+
           while ((word = words.pop())) {
             line.push(word);
             tspan.text(line.join(" "));

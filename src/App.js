@@ -6,8 +6,13 @@ import SpecificIllnessSample from './Helpers/sample-specific-illness';
 import 'typeface-roboto';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 import BarChartNeg from "./Components/BarChartNeg";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import TabContent from "./Components/TabContent"
 
 class App extends Component {
   constructor(props) {
@@ -29,12 +34,6 @@ class App extends Component {
   render() {
     return(
       <div className="App">
-        <Typography variant="h2" component="h2">
-          Data Visualization Assignment 1
-        </Typography>
-        <Typography variant="p" component="p">
-          Built using D3.js, React.js, MaterialUI and Github pages.
-        </Typography>
         <Tabs
           value={this.state.activeIdx}
           indicatorColor="primary"
@@ -44,10 +43,20 @@ class App extends Component {
           <Tab label="Visualization 1" />
           <Tab label="Visualization 2" />
         </Tabs>
+
+        <Card>
+          <CardContent>
+            <Typography variant="body2" component="p">
+            Built using Procreate, Sketch, Adobe Illustrator & React.js.
+            </Typography>
+          </CardContent>
+        </Card>
+
         <BarChartNeg  value={this.state.activeIdx}
                       index={0}
                       id="uk-immigration"
                       isHidden={this.state.activeIdx !== 0 }></BarChartNeg>
+
         <BarChart title="12 month prevalence of any mental illness (all U.S. adults)"
                       group="Adult groups"
                       value={this.state.activeIdx}
