@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d5406fae230f6481b6e8724e7829813f",
+    "revision": "f3f7db536ca85ccfacb13d9479859867",
     "url": "/datavis-2020/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/datavis-2020/static/css/2.06510f88.chunk.css"
   },
   {
-    "revision": "6854d8dcfb137764af2e",
+    "revision": "5d56101d059356357ddc",
     "url": "/datavis-2020/static/css/main.47e5fe7d.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/datavis-2020/static/js/2.fa7f711e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6854d8dcfb137764af2e",
-    "url": "/datavis-2020/static/js/main.2046b5b5.chunk.js"
+    "revision": "5d56101d059356357ddc",
+    "url": "/datavis-2020/static/js/main.0fc48c22.chunk.js"
   },
   {
     "revision": "1cd0e713b631b2850be2",
@@ -124,7 +124,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/datavis-2020/static/media/roboto-latin-900italic.ebf6d164.woff2"
   },
   {
-    "revision": "8e372d1ffe8df50bbe376d670bf58c04",
-    "url": "/datavis-2020/static/media/vis1.8e372d1f.svg"
+    "revision": "4206159dcaba8531e1d377b0845f1ca0",
+    "url": "/datavis-2020/static/media/vis1.4206159d.svg"
   }
 ]);
