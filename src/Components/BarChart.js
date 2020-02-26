@@ -69,7 +69,7 @@ class BarChart extends Component {
           .tickSize(-width, 0, 0)
           .tickFormat("")
       )
-      .attr("transform", `translate(${width/2}, 0)`)
+      .attr("transform", `translate(${5}, 0)`)
 
     const ticks = svg.selectAll(".tick");
     ticks.selectAll("text").call(wrap, 150);
@@ -90,7 +90,7 @@ class BarChart extends Component {
       .attr("fill", g => g.color)
 
       .on("mouseenter", function(actual, i) {
-        d3.selectAll(".value").attr("opacity", 0);
+        chart.selectAll(".value").attr("opacity", 0);
 
         d3.select(this)
           .transition()
